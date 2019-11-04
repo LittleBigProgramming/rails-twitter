@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     root to: 'dashboards#show'
   end
 
+  resources :posts, only: :create
+
   root to: "home#show", as: '/home'
 
   resources :passwords, controller: "clearance/passwords", only: %i[create new]
