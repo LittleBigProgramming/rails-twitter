@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     redirect_to root_path, redirect_options_for(post)
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def post_params
@@ -15,7 +19,7 @@ class PostsController < ApplicationController
     if post.persisted?
       { notice: 'Posted successfully' }
     else
-      { alert: 'Could not post'}
+      { alert: 'Could not post' }
     end
   end
 end
