@@ -5,8 +5,4 @@
   <%= form.submit "Post" %>
 <% end %>
 
-<% @posts.each do |post| %>
-  <div>
-    <%= post.body %>
-  </div>
-<% end %>
+<%= render @posts %>
