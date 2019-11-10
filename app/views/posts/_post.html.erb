@@ -1,0 +1,7 @@
+<div>
+  <%= link_to post.username, post.user %>
+  <%= post.body %>
+  <%= link_to post do %>
+    <%= time_ago_in_words(post.created_at) %> ago
+  <% end %>
+</div>
