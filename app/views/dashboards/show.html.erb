@@ -1,7 +1,9 @@
 <h3>Dashboard</h3>
 
 <%= form_with scope: @post, url: posts_path do |form| %>
-  <%= form.text_field :body, placeholder: "Post here" %>
+  <%= form.fields_for :content do |content_form| %>
+    <%= content_form.text_field :body, placeholder: "Post here" %>
+  <% end %>
   <%= form.submit "Post" %>
 <% end %>
 

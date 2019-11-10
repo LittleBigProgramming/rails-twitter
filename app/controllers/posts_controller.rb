@@ -12,7 +12,15 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body)
+    { content: content_from_params }
+  end
+
+  def content_from_params
+    TextPost.new(content_params)
+  end
+
+  def content_params
+    params.require(:post).require(:content).permit(:body)
   end
 
   def redirect_options_for(post)
