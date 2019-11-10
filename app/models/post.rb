@@ -7,4 +7,6 @@ class Post < ApplicationRecord
   default_scope do
     order(created_at: :desc)
   end
+
+  delegate :username, to: :user
 end
