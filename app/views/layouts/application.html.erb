@@ -2,8 +2,10 @@
 <html>
 <head>
   <%= csrf_meta_tag %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
+<body class="bg-gray-100">
   <div id="header">
     <% if signed_in? -%>
       Signed in as <%= current_user.email %>
@@ -19,6 +21,8 @@
     <% end %>
   </div>
 
-  <%= yield %>
+  <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+    <%= yield %>
+  </div>
 </body>
 </html>
