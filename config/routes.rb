@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     root to: 'dashboards#show'
   end
 
-  resources :posts, only: %i[create show]
+  resources :posts, only: %i[create show] do
+    member do
+      post 'like' => 'likes#create'
+      delete 'unlike' => 'likes#destroy'
+    end
+  end
 
   root to: "home#show", as: '/home'
 
