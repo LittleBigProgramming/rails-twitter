@@ -4,12 +4,27 @@
   <%= form_with scope: @post, url: posts_path,
       class: 'w-full bg-white' do |form| %>
     <div class="flex items-center p-6">
+    <%= form.hidden_field :content_type, value: 'text' %>
     <%= form.fields_for :content do |content_form| %>
       <%= content_form.text_field :body, placeholder: "Post here",
           class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
     <% end %>
     <%= form.submit "Post",
         class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4
+         text-white py-1 px-4 ml-4 rounded cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <%= form_with scope: @post, url: posts_path,
+                class: 'w-full bg-white' do |form| %>
+    <div class="flex items-center p-6">
+      <%= form.hidden_field :content_type, value: 'image' %>
+      <%= form.fields_for :content do |content_form| %>
+        <%= content_form.file_field :image,
+                                    class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      <% end %>
+      <%= form.submit "Post",
+                      class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4
          text-white py-1 px-4 ml-4 rounded cursor-pointer" %>
     </div>
   <% end %>
