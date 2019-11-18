@@ -16,9 +16,10 @@ class PostsController < ApplicationController
   end
 
   def content_from_params
-    case params[:shout][:content_type]
+    byebug
+    case params[:post][:content_type]
     when 'text' then TextPost.new(text_content_params)
-    when 'image' then TextPost.new(image_content_params)
+    when 'image' then ImagePost.new(image_content_params)
     end
   end
 
