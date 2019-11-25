@@ -6,20 +6,9 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="bg-gray-100">
-  <div id="header">
-    <% if signed_in? -%>
-      Signed in as <%= current_user.email %>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
-  </div>
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
+  <%= render 'layouts/partials/header' %>
+  <%= render 'layouts/partials/flash' %>
 
   <div class="container mx-auto flex flex-wrap pt-4 pb-12">
     <%= yield %>
