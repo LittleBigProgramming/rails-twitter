@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, case_sensitive: false
 
   has_many :posts, dependent: :destroy
   has_many :likes
@@ -17,5 +17,9 @@ class User < ApplicationRecord
 
   def liked?(post)
     liked_post_ids.include?(post.id)
+  end
+
+  def to_param
+    username
   end
 end
