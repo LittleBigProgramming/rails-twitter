@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def content_from_params
-    byebug
     case params[:post][:content_type]
     when 'text' then TextPost.new(text_content_params)
     when 'image' then ImagePost.new(image_content_params)
