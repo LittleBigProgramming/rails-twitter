@@ -1,3 +1,7 @@
-<h3><%= @user.username %></h3>
+<div class='flex items-center max-w-sm w-full mb-12'>
+  <%= avatar(@user) %>
+
+  <h3 class='text-gray-900 text-xl leading-none'><%= @user.username %></h3>
+</div>
 
 <%= render @posts %>
