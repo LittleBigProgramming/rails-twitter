@@ -2,6 +2,7 @@
   <%= avatar(@user) %>
 
   <h3 class='text-gray-900 text-xl leading-none'><%= @user.username %></h3>
+  <%= follow_button @user %>
 </div>
 
 <%= render @posts %>
