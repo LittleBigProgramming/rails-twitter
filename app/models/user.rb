@@ -18,7 +18,7 @@ class User < ApplicationRecord
     followed_user_ids.include?(user.id)
   end
 
-  def unfollow
+  def unfollow(user)
     followed_users.delete(user)
   end
 
