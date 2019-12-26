@@ -1,9 +1,13 @@
 <div class='w-full block lg:max-w-full mt-12 mb-6lg:flex'>
-  <%= avatar post.user %>
-  <%= link_to post.username, post.user %>
+  <div>
+    <%= avatar post.user %>
+    <%= link_to post.username, post.user %>
+  </div>
   <%= render post.content %>
   <%= link_to post do %>
-    <%= time_ago_in_words(post.created_at) %> ago
+    <div class='text-teal-600 hover:text-teal-400 hover:underline'>
+      <%= time_ago_in_words(post.created_at) %> ago
+    </div>
   <% end %>
 
   <%= like_button(post) %>
