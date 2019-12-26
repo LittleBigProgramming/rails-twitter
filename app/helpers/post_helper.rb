@@ -2,9 +2,14 @@ module PostHelper
 
   def like_button(post)
     if current_user.liked?(post)
-      link_to 'Unlike', unlike_post_path(post), method: :delete
+      link_to 'Unlike',
+              unlike_post_path(post),
+              method: :delete,
+              class: 'font-bold text-teal-600 hover:text-teal-400'
     else
-      link_to 'Like', like_post_path(post), method: :post
+      link_to 'Like', like_post_path(post),
+              method: :post,
+              class: 'font-bold text-teal-600 hover:text-teal-400'
     end
   end
 
