@@ -3,6 +3,7 @@
 
   <h3 class='text-gray-900 text-xl leading-none'><%= @user.username %></h3>
   <%= follow_button @user %>
+  <%= link_to 'Followers', user_followers_path(@user) %>
 </div>
 
 <%= render @posts %>
