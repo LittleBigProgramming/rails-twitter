@@ -16,18 +16,11 @@ class PostsController < ApplicationController
   end
 
   def content_from_params
-    case params[:post][:content_type]
-    when 'text' then TextPost.new(text_content_params)
-    when 'image' then ImagePost.new(image_content_params)
-    end
+    params[:content_type].new(content_params)
   end
 
-  def text_content_params
-    params.require(:post).require(:content).permit(:body)
-  end
-
-  def image_content_params
-    params.require(:post).require(:content).permit(:image)
+  def content_params
+    params.require(:post).require(:content).permit!
   end
 
   def redirect_options_for(post)
