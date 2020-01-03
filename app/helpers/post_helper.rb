@@ -1,13 +1,13 @@
 # frozen_string_literal: true
+
 module PostHelper
   def post_form_with(post_type)
-    form_with scope: Post.new, url: post_type,
+    form_with scope: Post.new, url: post_type.new,
               class: 'w-full bg-white' do |form|
-      form.hidden_field(:post_type, value: post_type) +
-        form.fields_for(:content) { |content_form| yield(content_form) } +
+      form.fields_for(:content) { |content_form| yield(content_form) } +
         form.submit('Post',
                     class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4
-           text-white py-1 px-4 ml-4 rounded cursor-pointer")
+             text-white py-1 px-4 ml-4 rounded cursor-pointer")
     end
   end
 
