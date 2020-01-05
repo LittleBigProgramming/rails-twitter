@@ -12,7 +12,7 @@ class UsersController < Clearance::UsersController
           .matches("%#{params[:id].downcase}%")
       ).first
 
-    @posts = @user.posts
+    @timeline = Timeline.new([@user])
   end
 
   private
