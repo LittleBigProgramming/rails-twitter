@@ -25,10 +25,23 @@ module PostHelper
   end
 
   def autolink(text)
-    text.gsub(/@\w+/) do |mention|
-      link_to mention,
-              user_path(mention[1..-1]),
-              class: 'text-blue-600 hover:text-blue-400 hover:underline'
-    end.html_safe
+    text
+      .gsub(/@\w+/, &method(:mention_link))
+      .gsub(/#\w+/, &method(:hashtag_link))
+      .html_safe
+  end
+
+  private
+
+  def hashtag_link(hashtag)
+    link_to hashtag,
+            hashtag_path(hashtag[1..-1]),
+            class: 'text-blue-600 hover:text-blue-400 hover:underline'
+  end
+
+  def mention_link(mention)
+    link_to mention,
+            user_path(mention[1..-1]),
+            class: 'text-blue-600 hover:text-blue-400 hover:underline'
   end
 end

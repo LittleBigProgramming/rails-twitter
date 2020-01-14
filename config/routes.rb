@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post 'text_posts' => 'posts#create', defaults: { content_type: TextPost }
   post 'image_posts' => 'posts#create', defaults: { content_type: ImagePost}
 
+  resources :hashtags, only: [:show]
+
   root to: 'home#show', as: '/home'
 
   resources :passwords, controller: 'clearance/passwords', only: %i[create new]
